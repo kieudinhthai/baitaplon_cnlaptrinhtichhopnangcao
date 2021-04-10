@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const homeConstroller = reqire('../modules/homeConstroller')
+const homeConstroller = require('../controllers/homeConstroller')
 router.get('/', homeConstroller.index)
 
-module.exports(route)
+module.exports = router
