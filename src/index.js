@@ -20,7 +20,7 @@ route(app)
 
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "view_pages", "layouts"));
+app.set("views", path.join(__dirname, "views" ));
 
 //route(app);
 
