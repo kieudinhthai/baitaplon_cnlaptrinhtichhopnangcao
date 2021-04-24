@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 async function connect() {
   try {
-    await mongoose.connect("mongodb://localhost/my_database", {
+    await mongoose.connect("mongodb://localhost/my_coffee_database", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
