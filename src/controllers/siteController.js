@@ -3,8 +3,8 @@
 class siteConstroller{
     // [GET] /
     index(req,res,next){
-        res.render('home')
+        res.render('main')
     }
   
 }
-module.exports = new siteConstroller;
+module.exports = new siteConstroller();
