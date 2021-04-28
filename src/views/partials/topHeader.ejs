@@ -3,11 +3,14 @@
       <i class="fa fa-phone text-white"></i>
      <span class=" font-weight-bold pr-2 text-white">090 144 48 67</span>
   </div>
-  <div class="form-group d-flex flex-row">
-    <input type="text"
-      class="form-control transparent-input text-white"  name="" id="" aria-describedby="helpId" placeholder="Nhập vào tiên sản phẩm" size="50">
-      <button class="btn btn-primary-outline text-white"><i class="fa fa-search "></i></button>
-  </div>
+  <form action="/search?id=#newIn" method="get">
+    <div class="form-group d-flex flex-row">
+      <input type="text"
+        class="form-control transparent-input text-white"  name="q" id="" aria-describedby="helpId" placeholder="Nhập vào tiên sản phẩm" size="50">
+        <button type="submit" class="btn btn-primary-outline text-white"><i class="fa fa-search "></i></button>
+    </div>
+
+  </form>
  
  </div>
 
@@ -16,5 +19,16 @@
 input.transparent-input{
  background-color:transparent !important;
  border:none;
+}
+::-webkit-input-placeholder { /* Edge */
+  color: white;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::placeholder {
+  color: white;
 }
 </style>
