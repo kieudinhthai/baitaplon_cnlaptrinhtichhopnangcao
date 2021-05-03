@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
+<<<<<<< HEAD
 const adminController = require('../controllers/adminConstroller')
 router.get('/', adminController.index)
 router.post('/insert/', adminController.insert)
@@ -23,5 +24,11 @@ router.put("/productUpdating", adminController.update)
     //  b2. put tới url: ../productUpdating
     //      render  /admin.
 
+=======
+const adminController = require('../controllers/adminController')
+router.get('/', adminController.index)
+router.post('/insert/', adminController.insert)
+
+>>>>>>> origin/thai_branch
 
 module.exports = router

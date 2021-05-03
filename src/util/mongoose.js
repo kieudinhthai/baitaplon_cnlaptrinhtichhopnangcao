@@ -5,6 +5,7 @@ module.exports = {
     
     mongooseToObject :function (mongooseArray){
         return mongooseArray ? mongooseArray.toObject():mongooseArray;
+<<<<<<< HEAD
     },
 
     // dùng khi multipleMongooseToObject không hoạt động
@@ -13,3 +14,7 @@ module.exports = {
         return [mongooseArray].map(mongoose => mongoose.toObject());
     },
 } 
+=======
+    }
+}
+>>>>>>> origin/thai_branch
