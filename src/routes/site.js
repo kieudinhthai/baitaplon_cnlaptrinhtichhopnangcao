@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-const mainConstroller = require('../controllers/siteController')
-router.get('/search', mainConstroller.search)
-router.get('/', mainConstroller.index)
+const siteConstroller = require('../controllers/siteController')
+router.get('/search', siteConstroller.search)
+router.get('/', siteConstroller.index)
 
 module.exports = router

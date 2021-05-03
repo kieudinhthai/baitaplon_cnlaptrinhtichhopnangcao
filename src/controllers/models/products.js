@@ -10,15 +10,9 @@ const productSchema = new mongoose.Schema({
         id: String,
         name: String
     },
-<<<<<<< HEAD
+
     rate: String,
     id: String
 })
 
 module.exports = mongoose.model("product", productSchema);
-=======
-    rate: String
-})
-
-module.exports = mongoose.model("product", productSchema);   
->>>>>>> origin/thai_branch
