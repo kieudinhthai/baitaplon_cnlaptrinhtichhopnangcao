@@ -1,7 +1,7 @@
 const Product = require("./models/products")
 const { multipleMongooseToObject } = require("../util/mongoose");
 
-class siteConstroller{
+class siteController{
     // [GET] /
     index(req,res,next){
         Product
@@ -22,7 +22,9 @@ class siteConstroller{
         .catch(next)
        
     }
+
+
    
   
 }
-module.exports = new siteConstroller();
+module.exports = new siteController();

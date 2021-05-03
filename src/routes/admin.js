@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const adminController = require('../controllers/adminConstroller')
+const adminController = require('../controllers/adminController')
 router.get('/', adminController.index)
 router.post('/insert/', adminController.insert)
 

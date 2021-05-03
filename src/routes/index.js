@@ -1,13 +1,15 @@
 const siteRouter = require('./site')
 const adminRouter = require('./admin')
-//const insertRouter = require('./post_test')
-//const booksRouter = require('./books')
+const layoutRouter = require('./layout')
+
+
 function route(app){
-  //  app.use('/insert/',insertRouter)
-    app.use('/admin/',adminRouter)
+
+   app.use('/admin/',adminRouter)
+   app.use('/layout/', layoutRouter)
    app.use('/',siteRouter);
     
- //   app.use('/books/',booksRouter)
+
 }
 
 

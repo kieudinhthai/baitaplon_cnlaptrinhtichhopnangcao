@@ -2,7 +2,7 @@
 const Product = require("./models/products")
 const { multipleMongooseToObject } = require("../util/mongoose");
 
-class adminConstroller{
+class adminController{
     // [GET] /admin/
     index(req,res,next){
         Product
@@ -25,4 +25,4 @@ class adminConstroller{
     }
   
 }
-module.exports = new adminConstroller();
+module.exports = new adminController();
