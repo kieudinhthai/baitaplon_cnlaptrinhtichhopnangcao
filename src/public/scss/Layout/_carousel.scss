@@ -9,7 +9,7 @@
     .carousel-inner {
       .item-1 {
         background-image: url("./img/slide/slide_1.jpeg");
-        height: 700px;
+        height: auto;
         background-position: center center;
         background-size: cover;
       }
@@ -17,7 +17,7 @@
       .item-2 {
         background-image: url("./img/slide/slide_2.jpeg");
 
-        height: 700px;.slider {
+        height: auto;.slider {
             .carousel-caption {
               left: 50%;
               bottom: initial;
@@ -92,7 +92,7 @@
       .item-3 {
         background-image: url("./img/slide/slide_3.jpeg");
 
-        height: 700px;
+        height: auto;
         background-position: center center;
         background-size: cover;
       }
@@ -121,7 +121,11 @@
         font-size: 1.125rem;
       }
       >button {
-        background:linear-gradient(to bottom, #b79891, #94716b);
+        background: linear-gradient(
+					to right,
+					#3a6073,
+					#16222a
+				);
         box-shadow: none;
         border-radius: 9999px;
         font-size: 0.75rem;

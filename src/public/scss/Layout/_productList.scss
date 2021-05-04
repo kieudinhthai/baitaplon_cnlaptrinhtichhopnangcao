@@ -66,7 +66,8 @@
         margin-bottom: 40px;
         letter-spacing: 1.7px;
         text-transform: uppercase;
-        color: #b79891;
+        color: 				#3a6073;
+			 
         position: relative;
         border-bottom: 1px solid #dfdfdf;
         padding-top: 50px;
@@ -77,8 +78,12 @@
            width: 120px;
            display: block;
           height: 4px;
-           box-shadow: 0 0 20px 0 #fbbd61;
-    // background: linear-gradient(to bottom, #b79891, #94716b);
+           box-shadow: 0 0 20px 0 #16222a;
+background: linear-gradient(
+					to right,
+					#3a6073,
+					#16222a
+				); 
 
   
          /* dùng position bỏ qua hết các padding */

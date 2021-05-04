@@ -3,7 +3,17 @@
 footer {
     font-size: 14px;
     font-weight: 500;
-    background-color: #000000;
+    				background: #16222a; /* fallback for old browsers */
+				background: -webkit-linear-gradient(
+					to right,
+					#3a6073,
+					#16222a
+				); /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(
+					to right,
+					#3a6073,
+					#16222a
+				); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding-top: 50px;
   
     h6 {
@@ -11,8 +21,9 @@ footer {
       margin: 0;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color:  #b79891;
+      color:  	#fff;
       border: none;
+      padding-bottom:5px;
       
     }
   
@@ -35,6 +46,7 @@ footer {
           
           i {
             color: #717171;
+            transition: all 0.5s;
           }
     
           &:hover {
@@ -42,7 +54,7 @@ footer {
             display: inline-block;
             padding: 3px 0;
             letter-spacing: 1.5px;
-            color:  #b79891;
+            color:  	#fff;
             text-decoration: none;
     
             i {
