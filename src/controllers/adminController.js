@@ -1,32 +1,59 @@
 const Product = require("./models/products")
 const { multipleMongooseToObject } = require("../util/mongoose");
 const { mongooseToObject } = require("../util/mongoose")
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const products = require("./models/products");
 
 class adminConstroller {
     // [GET] /admin/
     index(req, res, next) {
-        // console.log("index")
+        console.log("http://localhost:3005/admin/index")
         Product
             .find({})
             .then(products => {
                 res.render('admin/index', {
                     products: multipleMongooseToObject(products)
                 })
-                console.log(products[0])
             })
             .catch(next)
 
     }
 
-    //[POST] /admin/product
+    //[POST] /admin/product------------------------------
+    waitInsert(req,res,next){
+        // let newId = ""
+        // Product
+        //     .find({})
+        //     .then( products=>{
+        //         multipleMongooseToObject(products).forEach(data => {
+        //             // console.log(data.id)
+        //             if(data.id>newId)
+        //                 newId=data.id
+        //         })
+        //     })
+        res.render("admin/insertProducts")
+    }
     insert(req, res, next) {
-        var add = new Product(req.body)
-        console.log(add)
-        add
-            .save()
-            .then(() => res.redirect("/admin/"))
-            .catch((error) => {});
+        let newId = ""
+        Product
+            .find({})
+            .then( products=>{
+                multipleMongooseToObject(products).forEach(data => {
+                    if(data.id>newId)
+                        newId=data.id
+                })
+            })
+            .then(()=>{
+                console.log("newId"+newId)
+                var add = new Product(req.body)
+                add.id = newId
+                console.log(add)
+                add
+                    .save()
+                    .then(() => res.redirect("/admin/"))
+                    .catch((error) => {});
+            })
+            .catch(next)
     }
 
     // find products anywhere----------------------------
@@ -40,19 +67,24 @@ class adminConstroller {
     }
     findProductBy_id(req, res, next) {
         Product
-            .find({_id: req.query.key})
-            .then(products => res.render('admin/index', {
-                products: multipleMongooseToObject(products)
-            }))
+            .findOne({"category.id":req.query.key})
+            .then(products => res.render('admin/index', products))
             .catch(next)
     }
-
-    findOneProductName(req, res, next) {
-        console.log("abc@123")
-        Product.findOne({ name: req.query.key }, (doc) => {
-            console.log(doc)
-            res.json(doc)
-        })
+    // findOneProductName(req, res, next) {
+    //     console.log("abc@123")
+    //     Product.findOne({ name: req.query.key }, (doc) => {
+    //         console.log(doc)
+    //         res.json(doc)
+    //     })
+    // }
+    findCategory(req, res, next){
+        console.log("findCategory")
+        Product
+            .find({$or:[{"category.id": req.query.key},{"category.name": req.query.key}]})
+            .then(products =>res.render('admin/index', {
+                products: multipleMongooseToObject(products)
+            }))
     }
 
     //update -------------------------
@@ -71,20 +103,15 @@ class adminConstroller {
     }
 
     update(req, res, next) {
-        var newdata = Product.findOne({ productID: req.body.productID })
-        newdata.set(req.body)
-        var newdata = newdata.save()
-        console.log()
-
         Product
-            .find()
-            .then(products => res.render('admin/index', {
-                products: mongooseToObject(products)
-                
-            }))
-            .catch(next)
+        .findOneAndUpdate({_id: req.body._id}, req.body)
+        .then(
+            setTimeout(() => {
+                console.log("\x1b[32m","\nUpdate successfull - products._Id:{"+req.body._id+"}; redirect to ")
+                res.redirect('../') // redirect to http://localhost:3005/admin/index
+            }, 500) // timeout chờ mongodb cập nhật
+        )
     }
-
 
 }
 module.exports = new adminConstroller();

@@ -4,15 +4,21 @@ const router = express.Router()
 
 const adminController = require('../controllers/adminController')
 router.get('/', adminController.index)
-router.post('/insert/', adminController.insert)
+
+router.get('/insert', adminController.waitInsert)
+router.post('/inserting', adminController.insert)
+
 router.get("/product/:key?", adminController.findProduct)
     // get - query
     // truyền vào "key" một trong các object: name, vn_name, price, rate, id
     // trả về bảng: render("admin/index") - > trả về danh sách các product có thuộc tính trùng hợp
     // anywhere :v
-
+ 
 // router.get('/productfind/:key?', adminController.findOneProductName)
 router.get('/productFindBy_id/:key?', adminController.findProductBy_id)
+    //query : key = category.id
+router.get("/category/:key?", adminController.findCategory)
+    // 
 
 // update-----------------------------------
 router.get("/productUpdate/:key?", adminController.waitUpdate)

@@ -8,33 +8,70 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="style.css"> -->
   </head>
   <body>
 
     <%-include('../partials/header.ejs')%>
-    <h1>update test</h1>
-    <p><i style="color:green">bỏ forEach, thay data bằng products thì không gặp lỗi foreach. is not fucntion</i></p>
-      <table class="table">
-          <thead>
-              <tr>
-                 
-                  <th>name</th>
-                  <th>description</th>
-                  <th>price</th>
-                  <th>_ID</th>
-              </tr>
-          </thead>
-          <tbody>
-            <!-- -->
-              <tr>
-                  <td scope="row"><%=products.name %></td>
-                  <td><%=products.description %></td>
-                  <td><%=products.price %></td>
-                  <td><%=products._id %> </td>
-              </tr>
-              
-          </tbody>
-      </table>
+    <h2>Update</h2>
+    <div class="container">
+      <form class="col-sm-1-6" action="../productUpdating/?_method=PUT" method="POST">
+        <div class="form-group row">
+          <label for="inputName" class="col-sm-1-12 col-form-label"></label>
+          <div class="col-sm-1-12">
+            <input type="text" class="form-control" name="_id" id="_id" value="<%= String(products._id) %>">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for=""></label>
+          <input type="text"
+            class="form-control" name="name" id="name" aria-describedby="helpId" value="<%= products.name %>">
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+        <div class="form-group">
+          <label for=""></label>
+          <input type="text"
+            class="form-control" name="vn_name" id="vn_name" aria-describedby="helpId" value="<%= products.vn_name %>">
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+        <div class="form-group">
+          <label for=""></label>
+          <input type="text"
+            class="form-control" name="price" id="price" aria-describedby="helpId" value="<%= products.price %>">
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+        <div class="form-group">
+          <label for=""></label>
+          <input type="text"
+            class="form-control" name="category.id" id="category.id" aria-describedby="helpId" value="<%= products.category.id %>">
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+        <div class="form-group">
+          <label for=""></label>
+          <input type="text"
+            class="form-control" name="category.name" id="category.name" aria-describedby="helpId" value="<%= products.category.name %>">
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+        <div class="form-group">
+          <label for=""></label>
+          <input type="text"
+            class="form-control" name="rate" id="rate" aria-describedby="helpId" value="<%= products.rate %>">
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+        <div class="form-group">
+          <label for=""></label>
+          <input type="text"
+            class="form-control" name="id" id="id" aria-describedby="helpId" value="<%= products.id %>">
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+
+      <div class="row col-sm-1-6">
+        <img src="/img/<%= products.image %>" alt="">
+      </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
