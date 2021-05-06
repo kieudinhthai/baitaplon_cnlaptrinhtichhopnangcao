@@ -2,8 +2,6 @@ const Product = require("./models/products")
 const { multipleMongooseToObject } = require("../util/mongoose");
 const { mongooseToObject } = require("../util/mongoose")
 const mongoose = require("mongoose");
-const products = require("./models/products");
-
 class adminConstroller {
     // [GET] /admin/
     index(req, res, next) {
@@ -11,6 +9,7 @@ class adminConstroller {
         Product
             .find({})
             .then(products => {
+                console.log(multipleMongooseToObject(products))
                 res.render('admin/index', {
                     products: multipleMongooseToObject(products)
                 })
@@ -60,9 +59,10 @@ class adminConstroller {
     findProduct(req, res, next) {
         Product
             .find({ $or: [{ name: req.query.key }, { vn_name: req.query.key }, { price: req.query.key }, { rate: req.query.key }, { id: req.query.key }] })
-            .then(products => res.render('admin/index', {
+            .then(products => {
+                res.render('admin/index', {
                 products: multipleMongooseToObject(products)
-            }))
+            })})
             .catch(next)
     }
     findProductBy_id(req, res, next) {
@@ -112,6 +112,30 @@ class adminConstroller {
             }, 500) // timeout chờ mongodb cập nhật
         )
     }
+    // get001(){
+    //     Product.findOne({id:"001"})
+    //     .then(
+    //         products=>{
+    //             return products
+    //         }
+    //     )
+    // }
+    // get002(){
+    //     Product.findOne({id:"002"})
+    //     .then(
+    //         products2=>{
+    //             return products2
+    //         }
+    //     )
+    // }
+    // render2pr(req,res,next){
+    //     let a, b;
+    //     res.render("admin/index", {
+    //         a = this.get001() ,
+    //         b = this.get002() 
+    //     })
+    // }
 
 }
+
 module.exports = new adminConstroller();

@@ -12,20 +12,18 @@
   </div>
     <div class="row">
         <div class="col-6 d-flex justify-content-center align-items-center img-hover-zoom" width="80%">
-            <img src="../img/002.jpg" width="70%" height="auto" 
+            <img src="/../img/<%= product.image %>" width="70%" height="auto" 
             >
         </div>
                 
         <div class="col-md-6 align-items-center detail p-5">
       
-            <h5>Tên sản phẩm</h5>
-            <p class="mb-2 text-muted text-uppercase small">Loại</p>
+            <h5><%= product.name %> </h5>
+            <p class="mb-2 text-muted text-uppercase small"><%= product.category.name %></p>
       
-            <p><span class="mr-1"><strong>$12.99</strong></span></p>
+            <p><span class="mr-1"><strong><%= product.price %></strong></span></p>
             <h4>Mô tả</h4>
-            <p class="pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
-              error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
-              officia quis dolore quos sapiente tempore alias.</p>
+            <p class="pt-1"><%= product.description %></p>
 
             <hr>
 
