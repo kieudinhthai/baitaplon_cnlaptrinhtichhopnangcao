@@ -6,7 +6,7 @@ class siteController {
     // [GET] /
     index(req, res, next) {
         Product
-            .find({})
+            .find({}).skip(27)
             .then(products => res.render('main', {
                 products: multipleMongooseToObject(products)
             }))
