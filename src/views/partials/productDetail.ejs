@@ -36,7 +36,7 @@
 <div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
-
+<form action="/layout/product-detail/?key=<%=product._id%>" method="post">
       <!-- Modal Header -->
       <div class="modal-header text-center">
         <h4 class="modal-title ">Đánh giá thức uống</h4>
@@ -48,27 +48,43 @@
        <div class="form-group">
          <label for="">Name</label>
          <input type="text"
-           class="form-control" name="" id="" aria-describedby="helpId" placeholder="Vui lòng nhập vào tên">
+           class="form-control" name="name" id="" aria-describedby="helpId" placeholder="Vui lòng nhập vào tên">
        </div>
        <div class="form-group">
         <label for="">Email</label>
         <input type="text"
-          class="form-control" name="" id="" aria-describedby="helpId" placeholder="Vui lòng nhập vào email">
+          class="form-control" name="email" id="" aria-describedby="helpId" placeholder="Vui lòng nhập vào email">
       </div>
+      
+      <!--/Blue select-->
+      <div class="form-group">
+        <label for="exampleFormControlSelect2">How do you fell?</label>
+        <select class="custom-select" name="status" id="inputGroupSelect01">
+          <option selected>Choose</option>
+          <option value="Happy">Happy </option>
+          <option value="Love">Love</option>
+          <option value="Positive">Positive</option>
+          <option value="Sad">Sad</option>
+          <option value="Angry">Angry</option>
+
+        </select> 
+      </div>
+
       <div class="form-group">
         <label for="">Nhận xét</label>
-        <input type="text"
-          class="form-control" name="" id="" aria-describedby="helpId" placeholder="Bạn hãy nhận xét thức uống này nhé <3">
+        <textarea type="text"
+          class="form-control" name="comment" id="" aria-describedby="helpId" placeholder="Bạn hãy nhận xét thức uống này nhé <3"></textarea>
       </div>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="button" ><span>Góp ý</span></button>
         <button type="button" class="btn btn-danger"  data-dismiss="modal"><span>Đóng</span></button>
+        <button type="submit" name="id_product" value="<%=product._id%>" class="button" ><span>Góp ý</span></button>
+        
 
       </div>
-
+    </form>
     </div>
   </div>
 </div>

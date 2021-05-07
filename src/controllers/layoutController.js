@@ -1,6 +1,7 @@
 
 const Product = require("./models/products")
-const Category = require("./models/categories")
+const Comment = require("./models/comments")
+
 const { multipleMongooseToObject, mongooseToObject } = require("../util/mongoose");
 
 class layoutController{
@@ -16,19 +17,6 @@ class layoutController{
             .catch(next)
 
     }
-
-//     [GET] /layout/products/.....
- get_products(req,res,next){
-    Product
-    .find({"category.id": req.params.category_id})
-        .then(products => res.render('layouts/Products', {
-            products: multipleMongooseToObject(products),
-           
-        }))
-        .catch(next)
-    
-
-}
 
 
 
@@ -74,7 +62,21 @@ class layoutController{
             })
 }
 
-    
+
+    //[POST]
+    comment(req, res, next) {
+        var add = new Comment(req.body)
+        console.log(add)
+        add
+            .save()
+            .then(() => res.redirect("back"))
+            .catch((error) => {});
+    }
+
+
+    error(req, res, next){
+    res.render('404')
+ }
 
 }
 module.exports = new layoutController();

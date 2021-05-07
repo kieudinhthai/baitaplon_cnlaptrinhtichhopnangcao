@@ -1,86 +1,221 @@
 <section class="py-3 allProduct">
 
     <div class="container py-4">
-      
+
         <div class="row">
             <div class="col-md-3">
                 <!-- Tabs nav -->
                 <div class="nav flex-column nav-pills nav-pills-custom" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    
-                    <a class="nav-link mb-2 shadow active" id="v-pills-all-tab"  href="/layout/products" role="tab" aria-controls="v-pills-vnCf" aria-selected="true">
+                    <a class="nav-link mb-2 shadow active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all" aria-selected="true">
                         <span class="font-weight-bold small text-uppercase">All Products</span></a>
 
-                    <a class="nav-link mb-2 shadow" id="v-pills-vnCf-tab" href="/layout/products/01" role="tab" aria-controls="v-pills-italianCf" aria-selected="false"> 
+                    <a class="nav-link mb-2 shadow" id="v-pills-vnCf-tab" data-toggle="pill" href="#v-pills-vnCf" role="tab" aria-controls="v-pills-vnCf" aria-selected="false">
                         <span class="font-weight-bold small text-uppercase">VietNamese Coffee</span></a>
 
-                    <a class="nav-link mb-2 shadow" id="v-pills-italianCf-tab"  href="/layout/products/02" role="tab" aria-controls="v-pills-italianCf" aria-selected="false"> 
+                    <a class="nav-link mb-2 shadow" id="v-pills-italianCf-tab" data-toggle="pill" href="#v-pills-italianCf" role="tab" aria-controls="v-pills-italianCf" aria-selected="false">
                         <span class="font-weight-bold small text-uppercase">Italian Coffee</span></a>
 
-                    <a class="nav-link mb-2 shadow" id="v-pills-hand-brew-tab"  href="/layout/products/03" role="tab" aria-controls="v-pills-hand-brew" aria-selected="false">
-                    
+                    <a class="nav-link mb-2 shadow" id="v-pills-hand-brew-tab" data-toggle="pill" href="#v-pills-hand-brew" role="tab" aria-controls="v-pills-hand-brew" aria-selected="false">
+
                         <span class="font-weight-bold small text-uppercase">Hand Brew</span></a>
 
-                    <a class="nav-link mb-2 shadow" id="v-pills-signature-tab"  href="/layout/products/04" role="tab" aria-controls="v-pills-signature" aria-selected="false">
-  
+                    <a class="nav-link mb-2 shadow" id="v-pills-signature-tab" data-toggle="pill" href="#v-pills-signature" role="tab" aria-controls="v-pills-signature" aria-selected="false">
+
                         <span class="font-weight-bold small text-uppercase">Signature</span></a>
 
-                     <a class="nav-link mb-2 shadow" id="v-pills-food-tab"  href="/layout/products/06" role="tab" aria-controls="v-pills-food" aria-selected="false">
-  
+                     <a class="nav-link mb-2 shadow" id="v-pills-food-tab" data-toggle="pill" href="#v-pills-food" role="tab" aria-controls="v-pills-food" aria-selected="false">
+
                         <span class="font-weight-bold small text-uppercase">Food</span>
                         </a>
-                    <a class="nav-link mb-2 shadow" id="v-pills-tea-tab"  href="/layout/products/05" role="tab" aria-controls="v-pills-tea" aria-selected="false">
-  
+                    <a class="nav-link mb-2 shadow" id="v-pills-tea-tab" data-toggle="pill" href="#v-pills-tea" role="tab" aria-controls="v-pills-tea" aria-selected="false">
+
                         <span class="font-weight-bold small text-uppercase">Tea</span>
                         </a>
                     </div>
             </div>
-            
+
 
             <div class="col-md-9">
                 <!-- Tabs content -->
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade shadow rounded bg-white show active p-4" id="v-pills-vnCf" role="tabpanel" aria-labelledby="v-pills-vnCf-tab">
-                       <% var dataa =[] %>
-                        <%products.forEach(function(data) { %>
-                            <% dataa.push(data.category.name)%>
-                            <% }); %>
-                            <% var arrSet = [...new Set(dataa)]%>
-                        <h4 class="font-italic mb-4"> <%=arrSet%>   
-                        </h4>
+                    <div class="tab-pane fade shadow rounded bg-white show active p-4" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                        <h4 class="font-italic mb-4">All products</h4>
                         <div class="row">
+                            <% const data = Object.values(products);%>
+                            <% const product_arr = []; %>
 
-                            <%products.forEach(function(data) { %>
-                                 
+                            <% for (let product of data) { %>
+                            <% product_arr.push(product); }  %>
 
+                            <%const products_00 = product_arr.filter(product => product)%>
+                           
+
+                            <%products_00.forEach(function(data) { %>
+                            
+                       
                             <div class="col-lg-4 col-sm-6 col-xs-12">
                                 <div class="item" href="#">
-                                    <div class="img-hover-zoom " >
-                                          <img src="/../img/<%=data.image%>" class="w-80" alt="This zooms-in really well and smooth">
+                                    <div class="img-hover-zoom " >  
+                                          <img src="../img/<%=data.image%>" class="w-80" alt="This zooms-in really well and smooth">
                                     </div>
                                     <div class="content text-center">
                                     <span class="name"><%=data.name%></span>
-                                    <p>Giá :<%=data.price%> VND</p>
-                                    <button class="button"><span><a style="text-decoration: none; color: white;" href="/layout/product-detail/?key=<%=data._id%>">Tìm hiểu thêm</a></span></button>
+                                    <p>Giá :/<%=data.price%> VND</p>
+                                    <button class="button"><a href="/layout/product-detail/?key=<%=data._id%>" style="color: white; text-decoration: none ;">Tìm hiểu thêm </a></button>
                                 </div>
                                 </div>
                             </div>
-                           
-                             <% }); %>
-                         
-                            
-                            
+                            <% }); %>       
 
+                        </div>
+                    </div>
 
+                    <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-vnCf" role="tabpanel" aria-labelledby="v-pills-vnCf-tab">
+                        <h4 class="font-italic mb-4">VietNamese Coffee</h4>
+                        <div class="row">
+                            <%const products_01 = product_arr.filter(product => product.category.id =="01")%>
+
+                            <%products_01.forEach(function(data) { %>
                             
-
+                       
+                            <div class="col-lg-4 col-sm-6 col-xs-12">
+                                <div class="item" href="#">
+                                    <div class="img-hover-zoom " >  
+                                          <img src="../img/<%=data.image%>" class="w-80" alt="This zooms-in really well and smooth">
+                                    </div>
+                                    <div class="content text-center">
+                                    <span class="name"><%=data.name%></span>
+                                    <p>Giá :/<%=data.price%> VND</p>
+                                    <button class="button"><a href="/layout/product-detail/?key=<%=data._id%>" style="color: white; text-decoration: none ;">Tìm hiểu thêm </a></button>
+                                </div>
+                                </div>
+                            </div>
+                            <% }); %>       
 
                         </div>
                     </div>
                     
-                    
-                    
-                    
-                    
+                    <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-italianCf" role="tabpanel" aria-labelledby="v-pills-italianCf-tab">
+                        <h4 class="font-italic mb-4">Italian Coffee</h4>
+                        <div class="row">
+                            <%const products_02 = product_arr.filter(product => product.category.id =="02")%>
+
+                            <%products_02.forEach(function(data) { %>
+                            
+                       
+                            <div class="col-lg-4 col-sm-6 col-xs-12">
+                                <div class="item" href="#">
+                                    <div class="img-hover-zoom " >  
+                                          <img src="../img/<%=data.image%>" class="w-80" alt="This zooms-in really well and smooth">
+                                    </div>
+                                    <div class="content text-center">
+                                    <span class="name"><%=data.name%></span>
+                                    <p>Giá :/<%=data.price%> VND</p>
+                                    <button class="button"><a href="/layout/product-detail/?key=<%=data._id%>" style="color: white; text-decoration: none ;">Tìm hiểu thêm </a></button>
+                                </div>
+                                </div>
+                            </div>
+                            <% }); %>       
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-hand-brew" role="tabpanel" aria-labelledby="v-pills-hand-brew-tab">
+                        <h4 class="font-italic mb-4">Hand Brew</h4>
+                        <div class="row">
+                            <%const products_03 = product_arr.filter(product => product.category.id =="03")%>
+
+                            <%products_03.forEach(function(data) { %>
+                            
+                       
+                            <div class="col-lg-4 col-sm-6 col-xs-12">
+                                <div class="item" href="#">
+                                    <div class="img-hover-zoom " >  
+                                          <img src="../img/<%=data.image%>" class="w-80" alt="This zooms-in really well and smooth">
+                                    </div>
+                                    <div class="content text-center">
+                                    <span class="name"><%=data.name%></span>
+                                    <p>Giá :/<%=data.price%> VND</p>
+                                    <button class="button"><a href="/layout/product-detail/?key=<%=data._id%>" style="color: white; text-decoration: none ;">Tìm hiểu thêm </a></button>
+                                </div>
+                                </div>
+                            </div>
+                            <% }); %>       
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-signature" role="tabpanel" aria-labelledby="v-pills-signature-tab">
+                        <h4 class="font-italic mb-4">Signature</h4>
+                        <div class="row">
+                            <%const products_04 = product_arr.filter(product => product.category.id =="04")%>
+
+                            <%products_04.forEach(function(data) { %>
+                            
+                       
+                            <div class="col-lg-4 col-sm-6 col-xs-12">
+                                <div class="item" href="#">
+                                    <div class="img-hover-zoom " >  
+                                          <img src="../img/<%=data.image%>" class="w-80" alt="This zooms-in really well and smooth">
+                                    </div>
+                                    <div class="content text-center">
+                                    <span class="name"><%=data.name%></span>
+                                    <p>Giá :/<%=data.price%> VND</p>
+                                    <button class="button"><a href="/layout/product-detail/?key=<%=data._id%>" style="color: white; text-decoration: none ;">Tìm hiểu thêm </a></button>
+                                </div>
+                                </div>
+                            </div>
+                            <% }); %>       
+                        </div>
+                    </div>
+                    <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-tea" role="tabpanel" aria-labelledby="v-pills-tea-tab">
+                        <h4 class="font-italic mb-4">Tea</h4>
+                        <div class="row">
+                            <%const products_06 = product_arr.filter(product => product.category.id =="06")%>
+
+                            <%products_06.forEach(function(data) { %>
+                            
+                       
+                            <div class="col-lg-4 col-sm-6 col-xs-12">
+                                <div class="item" href="#">
+                                    <div class="img-hover-zoom " >  
+                                          <img src="../img/<%=data.image%>" class="w-80" alt="This zooms-in really well and smooth">
+                                    </div>
+                                    <div class="content text-center">
+                                    <span class="name"><%=data.name%></span>
+                                    <p>Giá :/<%=data.price%> VND</p>
+                                    <button class="button"><a href="/layout/product-detail/?key=<%=data._id%>" style="color: white; text-decoration: none ;">Tìm hiểu thêm </a></button>
+                                </div>
+                                </div>
+                            </div>
+                            <% }); %>       
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-food" role="tabpanel" aria-labelledby="v-pills-food-tab">
+                        <h4 class="font-italic mb-4">Food</h4>
+                        <div class="row">
+                            <%const products_05 = product_arr.filter(product => product.category.id =="05")%>
+
+                            <%products_05.forEach(function(data) { %>
+                            
+                       
+                            <div class="col-lg-4 col-sm-6 col-xs-12">
+                                <div class="item" href="#">
+                                    <div class="img-hover-zoom " >  
+                                          <img src="../img/<%=data.image%>" class="w-80" alt="This zooms-in really well and smooth">
+                                    </div>
+                                    <div class="content text-center">
+                                    <span class="name"><%=data.name%></span>
+                                    <p>Giá :/<%=data.price%> VND</p>
+                                    <button class="button"><a href="/layout/product-detail/?key=<%=data._id%>" style="color: white; text-decoration: none ;">Tìm hiểu thêm </a></button>
+                                </div>
+                                </div>
+                            </div>
+                            <% }); %>       
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
