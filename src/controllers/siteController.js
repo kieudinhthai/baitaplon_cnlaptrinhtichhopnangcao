@@ -6,7 +6,7 @@ class siteController {
     // [GET] /
     index(req, res, next) {
         Product
-            .find({})
+            .find({}).skip(27)
             .then(products => res.render('main', {
                 products: multipleMongooseToObject(products)
             }))
@@ -22,6 +22,10 @@ class siteController {
                 products: multipleMongooseToObject(products)
             }))
             .catch(next)
+    }
+
+    error(req, res, next){
+       res.render('404')
     }
 
 }
