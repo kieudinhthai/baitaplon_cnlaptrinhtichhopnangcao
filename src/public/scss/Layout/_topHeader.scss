@@ -2,8 +2,9 @@ input, select, textarea{
     color: #ff0000;
 }
 input.transparent-input{
- background-color:transparent !important;
+ background-color:#fff !important;
  border:none;
+ border-radius: 5px;
  &:hover {
     //  border : 1px solid ;
      background-color:#fff;

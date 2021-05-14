@@ -6,7 +6,7 @@
   <form action="/search?id=#newIn" method="get">
     <div class="form-group d-flex flex-row ">
       <input type="text"
-        class="form-control transparent-input text-white mt-3 "  name="q" id="" aria-describedby="helpId" placeholder="Nhập vào tiên sản phẩm" size="50">
+        class="form-control transparent-input mt-3 "  name="q" id="" aria-describedby="helpId" placeholder="Nhập vào tiên sản phẩm" size="50">
         <button type="submit" class="btn btn-primary-outline text-white mt-3" ><i class="fa fa-search "></i></button>
     </div>
 
@@ -17,18 +17,11 @@
 
 <style>
 input.transparent-input{
- background-color:transparent !important;
+ background-color:white;
  border:none;
 }
-::-webkit-input-placeholder { /* Edge */
-  color: white;
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: white;
-}
-
-::placeholder {
-  color: white;
+input[type=text] {
+  background-color: white;
+  color: black;
 }
 </style>
