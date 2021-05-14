@@ -12,57 +12,49 @@
   </head>
   <body>
 
-    <%-include('../partials/header.ejs')%>
-    <h2>Update</h2>
-    <div class="container">
+    <h2>Add new product</h2>
+    <div class="container ">
       <form class="col-sm-1-6" action="/admin/inserting" method="POST">
         <div class="form-group">
           <label for="">products.name</label>
           <input type="text"
             class="form-control" name="name" id="name" aria-describedby="helpId">
-          <small id="helpId" class="form-text text-muted">Help text</small>
         </div>
         <div class="form-group">
           <label for="">products.vn_name</label>
           <input type="text"
             class="form-control" name="vn_name" id="vn_name" aria-describedby="helpId">
-          <small id="helpId" class="form-text text-muted">Help text</small>
         </div>
         <div class="form-group">
           <label for="">products.description</label>
           <input type="text"
             class="form-control" name="description" id="description" aria-describedby="helpId">
-          <small id="helpId" class="form-text text-muted">Help text</small>
         </div>
         <div class="form-group">
           <label for="">products.price</label>
           <input type="text"
             class="form-control" name="price" id="price" aria-describedby="helpId">
-          <small id="helpId" class="form-text text-muted">Help text</small>
         </div>
         <div class="form-group">
           <label for="">products.category.id</label>
           <input type="text"
             class="form-control" name="category.id" id="category.id" aria-describedby="helpId">
-          <small id="helpId" class="form-text text-muted">Help text</small>
         </div>
         <div class="form-group">
           <label for="">products.category.name</label>
           <input type="text"
             class="form-control" name="category.name" id="category.name" aria-describedby="helpId">
-          <small id="helpId" class="form-text text-muted">Help text</small>
         </div>
         <div class="form-group">
             <label for="">products.rate - default 5*</label>
           <input type="text"
             class="form-control" name="rate" id="rate" aria-describedby="helpId" value="5" readonly>
-          <small id="helpId" class="form-text text-muted">Help text</small>
         </div>
         <div class="form-group">
             <label for="">products.image</label>
             <input type="file"
               class="form-control" name="image" id="image" aria-describedby="helpId">
-            <small id="helpId" class="form-text text-muted">Help text</small>
+
           </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
