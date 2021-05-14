@@ -4,6 +4,8 @@ const router = express.Router()
 
 const adminController = require('../controllers/adminController')
 router.get('/', adminController.index)
+router.get('/products', adminController.getProducts)
+router.get('/categories', adminController.getCategories)
 
 router.get('/insert', adminController.waitInsert)
 router.post('/inserting', adminController.insert)

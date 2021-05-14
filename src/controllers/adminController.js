@@ -18,6 +18,15 @@ class adminConstroller {
 
     }
 
+
+    getProducts(req, res, next){
+        res.render('admin/adminProducts')
+    }
+
+    getCategories(req, res, next){
+        res.render('admin/adminCategories')
+    }
+
     //[POST] /admin/product------------------------------
     waitInsert(req,res,next){
         // let newId = ""
