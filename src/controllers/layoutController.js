@@ -46,7 +46,6 @@ class layoutController{
  show_detail(req,res,next){
     console.log("----\nViewer connect: show_detail()")
     let product, productList,commentList
-
     Product
         .findOne({_id: req.query.key})
             .then(

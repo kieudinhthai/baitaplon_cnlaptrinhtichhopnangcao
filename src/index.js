@@ -1,13 +1,13 @@
 const express = require('express')
 const path = require("path");
 const app = express()
-const port = 3004
+var session = require('express-session');
 const methordOverride = require("method-override");
 const route = require('./routes')
 const data = require('./config/connect_db')
+const port = process.env.PORT || 3000;
+
 app.use(express.static(path.join(__dirname, "public")));
-
-
 app.use(express.json());
 app.use(methordOverride("_method"));
 app.use(
@@ -15,6 +15,11 @@ app.use(
     extended: true,
   })
 );
+app.use(session({
+  resave: true, 
+  saveUninitialized: true, 
+  secret: 'somesecret', 
+  cookie: { maxAge: 6000000 }}));
 
 data.connect()
 route(app)
