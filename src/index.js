@@ -19,7 +19,7 @@ app.use(session({
   resave: true, 
   saveUninitialized: true, 
   secret: 'somesecret', 
-  cookie: { maxAge: 6000000 }}));
+  cookie: { maxAge: 1000*60*60 }}));
 
 data.connect()
 route(app)

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const mongooseDelete = require('mongoose-delete');
 
 const productSchema = new mongoose.Schema({
     name: String,
@@ -13,6 +14,12 @@ const productSchema = new mongoose.Schema({
 
     rate: String,
     id: String
+})
+
+//Add plugin
+productSchema.plugin(mongooseDelete,{
+  deletedAt: true, 
+  
 })
 
 module.exports = mongoose.model("product", productSchema);

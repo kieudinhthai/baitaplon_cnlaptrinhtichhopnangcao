@@ -82,11 +82,12 @@
                     class="fas fa-edit"></i></a>
         </td>
             <td><a id="data._id" data-toggle="modal"
-                    data-target="#exampleModalLong" href=""><i
+                    data-target="#exampleModalLong" data-id="<%=data._id%>" href=""><i
                         style="color: red;" class="fas fa-trash-alt"></i></a>
             </td>
           </tr>
           <% }); %>  
+          
       </tbody>
 
       </table>
@@ -108,7 +109,7 @@
              Bạn muốn xóa sản phẩm này ?
          </div>
          <div class="modal-footer">
-             <button type="button" class="btn btn-primary">Delete</button>
+             <button type="button" id="btn-delete" class="btn btn-primary">Delete</button>
              <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
 
          </div>
@@ -183,7 +184,30 @@ aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 </div>
 </div>
 
+  <form name="delete-form"  method="POST"></form>
 
+<script>
+ 
+  document.addEventListener('DOMContentLoaded', function(){
+    var productID;
+    var btnDelete = document.getElementById('btn-delete');
+    var deleteForm = document.forms['delete-form']
+
+     //when dialog confirm clicked
+    $('#exampleModalLong').on('show.bs.modal', function(event){
+    var button = $(event.relatedTarget);
+    productID = button.data('id')
+   
+
+  })
+ 
+  btnDelete.onclick = function(){
+  deleteForm.action='/admin/delete/'+productID+'?_method=DELETE';
+  deleteForm.submit()
+  }
+  })
+
+</script>
     <!-- JavaScript files-->
     <script src="/../vendor/jquery/jquery.min.js"></script>
     <script src="/../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
