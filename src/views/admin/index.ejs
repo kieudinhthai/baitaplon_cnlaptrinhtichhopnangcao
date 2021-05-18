@@ -27,7 +27,7 @@
   <body>
 
     <%-include('../partials/sidebarAdmin.ejs')%>
-
+    <>
    <div class="page">
     <%-include('../partials/headerAdmin.ejs')%>
     <section class="dashboard-counts section-padding">
@@ -77,10 +77,11 @@
               <td><%=data.description %></td>
               <td><%=data.price %></td>
               <td><%=data._id %></td>
-              <td><a id="data._id" data-toggle="modal"
-                data-target="#modalEdit" href=""><i
-                    class="fas fa-edit"></i></a>
-        </td>
+              <td>
+                <a href="/admin/productDetail/?key=<%= data._id %>">
+                  <i class="fas fa-edit"></i>
+                </a>
+          </td>
             <td><a id="data._id" data-toggle="modal"
                     data-target="#exampleModalLong" data-id="<%=data._id%>" href=""><i
                         style="color: red;" class="fas fa-trash-alt"></i></a>
@@ -118,71 +119,7 @@
 </div>
 
 
-<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-edit" role="document">
- <div class="modal-content">
-     <div class="modal-header">
-         <h5 class="modal-title" id="exampleModalLongTitle">Chỉnh sửa thông tin sản phẩm</h5>
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-         </button>
-     </div>
-     <div class="modal-body">
-         <form class="form-horizontal">
-             <div class="form-group row">
-               <label class="col-sm-2 form-control-label">Tên tiếng việt</label>
-               <div class="col-sm-10">
-                 <input type="text" class="form-control">
-               </div>
-             </div>
-             <div class="form-group row">
-                 <label class="col-sm-2 form-control-label">Tên tiếng anh</label>
-                 <div class="col-sm-10">
-                   <input type="text" class="form-control">
-                 </div>
-               </div>
-               <div class="form-group row">
-                 <label class="col-sm-2 form-control-label">Category</label>
-                 <div class="col-sm-10 mb-3">
-                   <select name="account" class="form-control">
-                     <option>Lay </option>
-                     <option>tu</option>
-                     <option>database</option>
-                     <option>ra nha</option>
-                   </select>
-                 </div>
-               </div>
-               <div class="form-group row">
-                 <label class="col-sm-2 form-control-label">Mô tả</label>
-                 <div class="col-sm-10">
-                   <input type="text" class="form-control">
-                 </div>
-               </div>
-               <div class="form-group row">
-                 <label class="col-sm-2 form-control-label">Giá</label>
-                 <div class="col-sm-10">
-                   <input type="text" class="form-control">
-                 </div>
-               </div>
 
-               <div class="form-group row">
-                 <label class="col-sm-2 form-control-label">Hình ảnh</label>
-                 <div class="col-sm-10">
-                   <input type="file" class="form-control">
-                 </div>
-               </div>
-             <div class="line"></div>
-           </form>
-     </div>
-     <div class="modal-footer">
-         <button type="button" class="btn btn-primary">Save changes</button>
-         <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
-
-     </div>
- </div>
-</div>
-</div>
 
   <form name="delete-form"  method="POST"></form>
 

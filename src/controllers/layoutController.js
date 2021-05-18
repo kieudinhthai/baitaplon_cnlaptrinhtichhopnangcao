@@ -1,4 +1,3 @@
-
 const Product = require("./models/products")
 const Comment = require("./models/comments")
 
@@ -10,7 +9,7 @@ class layoutController{
  get_all_products(req,res,next){
    
         Product
-            .find({})
+            .find({detetedAt:null})
             .then(products => {
                 let countArrCate=[], nameArrCate=[]
                 if(products!=""){
@@ -55,7 +54,7 @@ class layoutController{
             )
             // product.category
             .then(()=>{
-                Product.find({"category.id": product.category.id})
+                Product.find({detetedAt:null, "category.id": product.category.id})
                 .then(productsL=>{
                     productList = Object.values(multipleMongooseToObject(productsL));
                 })
@@ -67,7 +66,7 @@ class layoutController{
             })
             // comments.comment
             .then(()=>{
-                Comment.find({id_product: product._id})
+                Comment.find({detetedAt:null,id_product: product._id})
                 .then(commentsL=>{
                     commentList = Object.values(multipleMongooseToObject(commentsL))
                     // render->controller->show_detail-------------------------------------------

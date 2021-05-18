@@ -58,7 +58,7 @@
                                             aria-labelledby="nav-home-tab">
                                                 <table class="table">
                            <thead class="thead-dark">
-                                                  <tr> 
+                                                  <tr><th>none</th>
                                                       <th>STT</th>  
                                                       <th>name</th>
                                                       <th>description</th>
@@ -71,6 +71,7 @@
                                               <tbody>
                                                 <% var i =1; product_dels.forEach(function(data) { %>
                                                   <tr>
+                                                      <td><input type="checkbox" name="" id=""><span></span></td>
                                                       <td scope="row"><%=i++ %></td>
                                                       <td><%=data.name %></td>
                                                       <td><%=data.description %></td>
@@ -161,7 +162,9 @@
         </div>
 
 
-    
+    <style>
+
+    </style>
 
 <form name="form-delete" action="" method="POST"></form>
 <form name="form-restore" action="" method="POST"></form>
@@ -171,7 +174,7 @@
         var deleteForm = document.forms["form-delete"];
         var restoreForm = document.forms["form-restore"]
         var btnDelete = document.getElementById('btn-delete');
-        var restoreBtn = $('.btn-restore')
+        var btnRestore = $('.btn-restore')
 
         $('#exampleModalLong').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
@@ -187,7 +190,7 @@
 
         }
 
-        restoreBtn.click(function (e) {
+        btnRestore.click(function (e) {
             e.preventDefault();
             var id = $(this).data('id');
             restoreForm.action = '/admin/restore/' + id + '?_method=PATCH';
@@ -214,5 +217,7 @@
     .modal-dialog-edit{
         max-width: 756px;
     }
+
+    
 </style>
 </html>

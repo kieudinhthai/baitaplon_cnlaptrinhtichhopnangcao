@@ -6,7 +6,7 @@ class siteController {
     // [GET] /
     index(req, res, next) {
         Product
-            .find({}).skip(27)
+            .find({deletedAt:null}).skip(20)
             .then(products => res.render('main', {
                 products: multipleMongooseToObject(products)
             }))
@@ -17,7 +17,7 @@ class siteController {
     // [GET] /search
     search(req, res, next) {
         Product
-            .find({ name: new RegExp(req.query.q, 'i') })
+            .find({ deletedAt:null, name: new RegExp(req.query.q, 'i') })
             .then(products => res.render('main', {
                 products: multipleMongooseToObject(products)
             }))
