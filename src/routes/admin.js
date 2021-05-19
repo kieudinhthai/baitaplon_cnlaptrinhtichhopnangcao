@@ -24,6 +24,8 @@ router.post('/insertCategories', adminController.insertCategory)
 // router.get('/products/?:productDetail',adminController.productDetail)
 router.get('/productDetail?:key',adminController.productDetail)
 router.put('/productUpdate',store.single('image'),adminController.productUpdate)
+router.post("/categoryInsert",adminController.insertCategory)
+router.put("/categoryUpdate",adminController.updateCategory)
 router.get('/:slug', adminController.error)
 
 module.exports = router

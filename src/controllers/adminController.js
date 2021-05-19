@@ -131,6 +131,7 @@ class adminController {
                 res.render('admin/login',{message:"Bạn chưa đăng nhập"})
             }
             else{
+                // console.log(categories);
                 res.render('admin/adminCategories',{categories})
             }
            
@@ -194,7 +195,7 @@ class adminController {
         })
     .catch(next)
 }
-// [put] admin/updateProduct
+// [put] admin/detailProduct
 productDetail(req, res ,next ){
     let product,categoriesArray
     // console.log("product detail")
@@ -244,7 +245,7 @@ productUpdate(req, res, next) {
                     data.image = imgname
                 })
                 .then(()=>{
-                    console.log(data)
+                    // console.log(data)
                     let newdata = new Product(data)
                     data.save()
                     res.redirect("/admin/")
@@ -265,15 +266,16 @@ insertCategory(req, res, next){
                 newId=(data.id) // products.id
         })
         
-        // console.log(newId);
+        console.log(newId);
     })
     .then(()=>{
         console.log("newId ->: "+(newId++))
         var add = new Category({
-            name:categoryName,
+            name:req.body.name,
+            vn_name: req.body.vn_name,
             id:newId++
         }) //tạo 1 object mới
-        add.id = newId // gán 
+        // add.id = newId // gán 
         console.log(add)
         add
         .save()
@@ -284,8 +286,28 @@ insertCategory(req, res, next){
     .catch(next)
 }
 
-
-
+//updateCategory
+updateCategory(req,res,next){
+    let dataOld, dataNew
+    Category.findOne({id: req.body.idUp})
+        .then(categories=>{
+            if(!categories){
+                res.status(400).send({
+                    message: 'No data! - you have hacker? - This is an error!'
+                })
+            }
+            else{
+                dataNew= categories
+                dataOld= categories
+                console.log(categories)
+                dataNew.name = req.body.nameUp
+                dataNew.vn_name = req.body.vn_nameUp
+                dataNew.save()
+            }
+        }).then(()=>{
+            res.redirect("/admin/categories")
+        }).catch(next)
+}
     
     
     logout(req, res, next) {

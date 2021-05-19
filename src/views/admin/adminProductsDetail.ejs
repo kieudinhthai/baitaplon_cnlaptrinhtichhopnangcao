@@ -67,7 +67,11 @@
                               <div class="col-sm-10 mb-3">
                                 <select name="categoryId" id="categoryId" class="form-control">
                                   <% categoriesArray.forEach(categoriesArray => { %>
-                                      <option value="<%- categoriesArray.id %>"><%- categoriesArray.name %></option>
+                                      <option value="<%- categoriesArray.id %>"
+                                         <% if(categoriesArray.id==product.category.id) {%>
+                                          selected="selected"
+                                         <% }%> 
+                                         ><%- categoriesArray.name %></option>
                                   <% }); %> 
                                 </select>
                               </div>
