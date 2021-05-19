@@ -464,7 +464,7 @@ updateCategory(req,res,next){
 
 
   error(req, res, next){
-    res.render('404')
+    res.render('admin/404')
  }
 
 }
