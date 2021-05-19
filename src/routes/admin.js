@@ -22,12 +22,14 @@ router.patch('/restore/category/:id',adminController.restore_cat)
 
 // router.get('/insert', adminController.waitInsert)
 router.post('/insert', store.single('image'),adminController.insertProduct)
-router.post('/insertCategories', adminController.insertCategory)
+// router.post('/insertCategories', adminController.insertCategory)
 // product property upadte.. 
 // router.get('/products/?:productDetail',adminController.productDetail)
 router.get('/productDetail?:key',adminController.productDetail)
 router.put('/productUpdate',store.single('image'),adminController.productUpdate)
 router.get('/search', adminController.search)
+router.post("/categoryInsert",adminController.insertCategory)
+router.put("/categoryUpdate",adminController.updateCategory)
 router.get('/:slug', adminController.error)
 
 module.exports = router

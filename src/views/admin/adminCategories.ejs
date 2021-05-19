@@ -77,14 +77,25 @@
                                                         <td scope="row"><%= i++%></td>
                                                         <td><%=data.id%></td>
                                                         <td><%=data.name%></td>
-                                                        <td><a id="" data-toggle="modal"
-                                                            data-target="#modalEdit" href=""><i
-                                                                class="fas fa-edit"></i></a>
-                                                    </td>
-                                                    <td><a id="data._id" data-toggle="modal"
-                                                        data-target="#exampleModalLong" data-id="<%=data._id%>" href=""><i
-                                                            style="color: red;" class="fas fa-trash-alt"></i></a>
-                                                </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-link" onclick="updating('<%= data.id%>','<%= data.name %>','<%= data.vn_name%>')">
+                                                                <a id="" data-toggle="modal" data-target="#modalEdit" href=""></a>
+                                                                    <i class="fas fa-edit"></i>
+                                                                </a>
+                                                            </button>
+                                                        
+                                                        </td>
+                                                        <script>
+                                                            function updating(cateID, cateName, cateVn_name) {                        
+                                                                document.getElementById("idUp").value = cateID
+                                                                document.getElementById("nameUp").value = cateName
+                                                                document.getElementById("vn_nameUp").value = cateVn_name
+                                                            }
+                                                        </script>
+                                                        <td><a id="<%=data._id%>" data-toggle="modal"
+                                                                data-target="#exampleModalLong" href=""><i
+                                                                    style="color: red;" class="fas fa-trash-alt"></i></a>
+                                                        </td>
                                                     </tr>
                                                     <% })%>                                               
                                                 </tbody>
@@ -98,17 +109,17 @@
                       <h4>Điền thông tin </h4>
                     </div>
                     <div class="card-body">
-                      <form class="form-horizontal" method="POST" action="/admin/insertCategories">
+                      <form class="form-horizontal" action="/admin/categoryInsert" method="POST">
                         <div class="form-group row">
                           <label class="col-3 form-control-" name>Tên tiếng việt</label>
                           <div class="col-9">
-                            <input type="text" name="vn_name" class="form-control">
+                            <input type="text" id="vn_name" name="vn_name" class="form-control">
                           </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-3 form-control-label">Tên tiếng anh</label>
                             <div class="col-9">
-                              <input type="text" name="name" class="form-control">
+                              <input type="text" id="name" name="name" class="form-control">
                             </div>
                           </div>
     
@@ -166,6 +177,7 @@
 
         <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <!-- Cập nhật - chỉnh sửa thông tin -->
         <div class="modal-dialog modal-dialog-edit" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -175,32 +187,33 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal col-md-8" action="/admin/categoryUpdate/?_method=PUT" method="POST" >
                         <div class="form-group row">
                             <label class="col-3 form-control-label">Category ID</label>
                             <div class="col-9">
-                              <input type="text" class="form-control">
+                              <input type="text" id="idUp" name="idUp" class="form-control">
                             </div>
                           </div>
                         <div class="form-group row">
                           <label class="col-3 form-control-label">Tên tiếng việt</label>
                           <div class="col-9">
-                            <input type="text" class="form-control">
+                            <input type="text" id="vn_nameUp" name="vn_nameUp" class="form-control">
                           </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-3 form-control-label">Tên tiếng anh</label>
                             <div class="col-9">
-                              <input type="text" class="form-control">
+                              <input type="text" id="nameUp" name="nameUp" class="form-control">
                             </div>
                           </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+
+                        </div>
                       </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
-
-                </div>
+                
             </div>
         </div>
     </div>
