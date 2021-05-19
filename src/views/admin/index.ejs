@@ -59,13 +59,15 @@
     <section class="container px-5 table-responsive">
       <h1>Table products </h1>
       <table id="example" class="table table-striped data-table">
-        <thead>
+        <thead class="thead-dark">
           <tr> 
               <th>STT</th>  
               <th>name</th>
+              <th>vn_name</th>
               <th>description</th>
+              <th>category</th>
               <th>price</th>
-              <th>_ID</th>
+              <th></th>
               <th></th>
           </tr>
       </thead>
@@ -74,9 +76,11 @@
           <tr>
               <td scope="row"><%=i++ %></td>
               <td><%=data.name %></td>
+              <td><%=data.vn_name %></td>
               <td><%=data.description %></td>
+              <td><%=data.category.name %></td>
               <td><%=data.price %></td>
-              <td><%=data._id %></td>
+              
               <td>
                 <a href="/admin/productDetail/?key=<%= data._id %>">
                   <i class="fas fa-edit"></i>
@@ -139,7 +143,7 @@
   })
  
   btnDelete.onclick = function(){
-  deleteForm.action='/admin/delete/'+productID+'?_method=DELETE';
+  deleteForm.action='/admin/delete/product/'+productID+'?_method=DELETE';
   deleteForm.submit()
   }
   })

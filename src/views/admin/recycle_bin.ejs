@@ -69,7 +69,7 @@
                                                   </tr>
                                               </thead>
                                               <tbody>
-                                                <% var i =1; product_dels.forEach(function(data) { %>
+                                                <% var i =1; products.forEach(function(data) { %>
                                                   <tr>
                                                      
                                                       <td scope="row"><%=i++ %></td>
@@ -107,21 +107,28 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-    
-                                                    <tr>
-                                                        <td scope="row">1</td>
-                                                        <td>Cà phê</td>
-                                                        <td>Coffee</td>
-                                                        <td><a  data-toggle="modal"
-                                                            data-target="#modalEdit" href=""><i
-                                                                class="fas fa-edit"></i></a>
+                                                  <%  if (categories.length ==0){ %>
+                                                        <tr><td colspan="3">Empty</td></tr>
+                                                        <%    }else { %>
+
+                                                
+                                                    <% var i =1; categories.forEach(function(data) { %>
+                                                      <tr>
+                                                         
+                                                          <td scope="row"><%=i++ %></td>
+                                                          <td><%=data.name %></td>
+                                                          <td><%=data.id %></td>
+                                                          <td><a   data-id="<%=data._id%>"  class="btn-restore-cat"
+                                                             href="" title="restore"><i class="far fa-window-restore " ></i></a>
                                                     </td>
-                                                        <td><a id="data._id"  data-toggle="modal" 
-                                                                data-target="#exampleModalLong" href=""><i
+                                                        <td><a id="data._id" data-toggle="modal" title="delete" class="btn-force-delete" 
+                                                                data-target="#exampleModalLong" data-id="<%=data._id%>" href=""><i
                                                                     style="color: red;" class="fas fa-trash-alt"></i></a>
                                                         </td>
-                                                    </tr>
-                                                </tbody>
+                                                      </tr>
+                                                      <% });    } %>  
+                                                      
+                                                  </tbody>
                                             </table>
                 </div>
                                         </div>
@@ -163,7 +170,6 @@
 
 
     <style>
-
     </style>
 
 <form name="form-delete" action="" method="POST"></form>
@@ -174,32 +180,34 @@
         var deleteForm = document.forms["form-delete"];
         var restoreForm = document.forms["form-restore"]
         var btnDelete = document.getElementById('btn-delete');
+        var btnRestoreCat = $('.btn-restore-cat')
         var btnRestore = $('.btn-restore')
 
         $('#exampleModalLong').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-
             productID = button.data('id');
-
         });
-
         btnDelete.onclick = function () {
-
-            deleteForm.action = '/admin/delete/' + productID + 'force?_method=DELETE';
+            deleteForm.action = '/admin/delete/product/' + productID + '/force?_method=DELETE';
             deleteForm.submit();
-
         }
-
+        btnDelete.onclick = function () {
+            deleteForm.action = '/admin/delete/category/' + productID + '/force?_method=DELETE';
+            deleteForm.submit();
+        }
         btnRestore.click(function (e) {
             e.preventDefault();
             var id = $(this).data('id');
-            restoreForm.action = '/admin/restore/' + id + '?_method=PATCH';
+            restoreForm.action = '/admin/restore/product/' + id + '?_method=PATCH';
+            restoreForm.submit();
+        })
+        btnRestoreCat.click(function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            restoreForm.action = '/admin/restore/category/' + id + '?_method=PATCH';
             restoreForm.submit();
         })
     });
-
-
-
 </script>
         <!-- JavaScript files-->
         <script src="/../vendor/jquery/jquery.min.js"></script>
@@ -217,7 +225,6 @@
     .modal-dialog-edit{
         max-width: 756px;
     }
-
     
 </style>
 </html>

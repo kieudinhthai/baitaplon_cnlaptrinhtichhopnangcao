@@ -10,13 +10,15 @@
           <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
             <li class="nav-item"> <span
               class="d-none d-sm-inline-block">
-              <div class="input-group rounded">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                  aria-describedby="search-addon" />
-                  <button type="button" class="btn btn-primary">
-                    <i class="fas fa-search"></i>
-                  </button>
-              </div>
+              <form action="/admin/search" method="get">
+                <div class="input-group rounded">
+                  <input type="search" name="q" class="form-control rounded" placeholder="Search" aria-label="Search"
+                    aria-describedby="search-addon" />
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fas fa-search"></i>
+                    </button>
+                </div>
+              </form>
               
             </li>
             <!-- Log out-->
