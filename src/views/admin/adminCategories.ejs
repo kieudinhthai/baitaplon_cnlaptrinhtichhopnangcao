@@ -92,8 +92,8 @@
                                                                 document.getElementById("vn_nameUp").value = cateVn_name
                                                             }
                                                         </script>
-                                                        <td><a id="<%=data._id%>" data-toggle="modal"
-                                                                data-target="#exampleModalLong" href=""><i
+                                                        <td><a id="<%-data._id%>" data-toggle="modal"
+                                                                data-target="#exampleModalLong" href="" data-id="<%=data._id%>"><i
                                                                     style="color: red;" class="fas fa-trash-alt"></i></a>
                                                         </td>
                                                     </tr>
@@ -230,6 +230,7 @@
         $('#exampleModalLong').on('show.bs.modal', function(event){
         var button = $(event.relatedTarget);
         productID = button.data('id')
+    console.log(productID)
        
     
       })
