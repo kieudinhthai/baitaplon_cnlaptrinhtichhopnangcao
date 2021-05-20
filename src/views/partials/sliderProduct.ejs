@@ -6,27 +6,20 @@
     </div>
     <hr/>
     <div class="owl-carousel owl-theme listItem">
-     <% const objectKeys = []; %>
 
-     <% for (let objectKey of productList) { %>
-      <%    objectKeys.push(objectKey);  %>
-    <%}%>
-
-
-    <%objectKeys.forEach(function(data) { %>
-          
-        <div class="item" href="#">
-          <div class="img-hover-zoom" >
-             <img src="/../img/<%=data.image%>" alt="This zooms-in really well and smooth">
-          </div>
-          <div class="content text-center">
-            <span class="name"><%=data.name%></span>
-            <p>Giá :<%=data.price%> VND</p>
-            <button class="button"><span><a style="color: white; text-decoration: none;" href="/layout/product-detail/?key=<%=data._id%>">Tìm hiểu thêm</a> </span></button>
+      <%productList.forEach(function(data) { %>
+            
+         <div class="item" href="#">
+            <div class="img-hover-zoom" >
+               <img src="/../img/<%=data.image%>" alt="This zooms-in really well and smooth">
+            </div>
+            <div class="content text-center">
+               <span class="name"><%=data.name%></span>
+               <p>Giá :<%=data.price%> VND</p>
+               <button class="button"><span><a style="color: white; text-decoration: none;" href="/layout/product-detail/?key=<%=data._id%>">Tìm hiểu thêm</a> </span></button>
+            </div>
          </div>
-      </div>
-    
       <% }); %>
-
-         </div>
+   </div>
+   
 </div>

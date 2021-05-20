@@ -62,27 +62,27 @@ class layoutController{
                     console.log('err: Product.find({"category.id": product.category.id}) -> show_detail(req,res,next){');
 
                     console.log(next);
-                });
+                })
+                .then(()=>{
+                    Comment.find({detetedAt:null,id_product: product._id})
+                    .then(commentsL=>{
+                        commentList = Object.values(multipleMongooseToObject(commentsL))
+                        // render->controller->show_detail-------------------------------------------
+                        console.log("URL: ../layout/product-detail/?key="+product._id)
+                        res.render('layouts/Product_Detail',{ 
+                            product,
+                            productList,
+                            commentList
+                         })
+      
+                    })
+                    .catch((next)=>{
+                        console.log('err: Product.find({"comment.id_product": product._id}) ->show_detail(req,res,next){');
+                        console.log(next);
+                    });
+                })
             })
             // comments.comment
-            .then(()=>{
-                Comment.find({detetedAt:null,id_product: product._id})
-                .then(commentsL=>{
-                    commentList = Object.values(multipleMongooseToObject(commentsL))
-                    // render->controller->show_detail-------------------------------------------
-                    console.log("URL: ../layout/product-detail/?key="+product._id)
-                    res.render('layouts/Product_Detail',{ 
-                        product,
-                        productList,
-                        commentList
-                     })
-  
-                })
-                .catch((next)=>{
-                    console.log('err: Product.find({"comment.id_product": product._id}) ->show_detail(req,res,next){');
-                    console.log(next);
-                });
-            })
             .catch((next)=>{
                 console.log('err: -> show_detail(req,res,next){');
 
