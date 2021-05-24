@@ -1,5 +1,6 @@
 const Product = require("./models/products")
 const fs = require('fs');
+const md5 = require('md5');
 const Account = require("./models/account")
 const Category = require("./models/categories")
 const { multipleMongooseToObject } = require("../util/mongoose");
@@ -94,7 +95,7 @@ class adminController {
         Account
         .findOne({user:req.body.username},function(err,data){
             if(data){
-                if(data.password==req.body.password){
+                if(data.password==md5(req.body.password)){
                     console.log("Done Login");
                     req.session.userId = data._id;
                     console.log(req.session.userId);
@@ -409,14 +410,14 @@ updateCategory(req,res,next){
     //[DELETE] /admin/category/delete  ------category
     delete_cat(req,res, next){
         Category.delete({_id:req.params.id})
-        .then(()=>res.redirect('/admin/categories'))
+        .then(()=>res.redirect('back'))
         .catch(next)
        }
    
     //---category
      forceDelete_cat(req, res, next) {
         Category.deleteOne({ _id: req.params.id })
-         .then(() => res.redirect('/admin/categories'))
+         .then(() => res.redirect('back'))
          .catch(next);
      }
      
