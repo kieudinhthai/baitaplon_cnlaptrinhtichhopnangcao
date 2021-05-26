@@ -19,7 +19,8 @@ class adminController {
             .then(
                 accountObj=>{
                     account = accountObj
-                    console.log(account);
+                    console.log("Checking session done!");
+                    
                 }
             )
         .then(()=>{
@@ -53,7 +54,7 @@ class adminController {
             .then(
                 accountObj=>{
                     account = accountObj
-                    console.log(account);
+                    console.log("Checking session done!");
                 }
             )
         .then(()=>{
@@ -71,7 +72,7 @@ class adminController {
                     res.redirect('/admin/login')
                 }
                 else{
-                    res.render('admin/adminProducts',{
+                    res.render('admin/adminAddProducts',{
                         productsArray,
                         categoriesArray
                     })
@@ -121,7 +122,7 @@ class adminController {
             .then(
                 accountObj=>{
                     account = accountObj
-                    console.log(account);
+                    console.log("Checking session done!");
                 }
             )
         .then(()=>{
@@ -191,7 +192,7 @@ class adminController {
                 console.log(add)
                 add
                     .save()
-                    .then(() => res.redirect("/admin/products"))
+                    .then(() => res.redirect("/admin"))
                     .catch((error) => {});
             })
         })
@@ -207,7 +208,7 @@ productDetail(req, res ,next ){
         .then(
             accountObj=>{
                 account = accountObj
-                console.log(account);
+                console.log("Checking session done!");
             }
         )
     .then(()=>{
@@ -277,13 +278,13 @@ productUpdate(req, res, next) {
 
 // [Post] admin/categories---------------------------
 insertCategory(req, res, next){
-    let newId = ""
+    let newId = 0
     Category
     .find({})
     .then( categories=>{
         multipleMongooseToObject(categories).forEach(data => {
-            if(data.id>newId)
-                newId=(data.id) // products.id
+            if(data.id>parseInt(newId))
+                newId=parseInt(data.id) // products.id
         })
         
         console.log(newId);
@@ -358,7 +359,7 @@ updateCategory(req,res,next){
                     .then(
                         accountObj=>{
                             account = accountObj
-                            console.log(account);
+                            console.log("Checking session done!");
                         }
                     )
                 .then(()=>{
@@ -438,15 +439,19 @@ updateCategory(req,res,next){
         .then(
             accountObj=>{
                 account = accountObj
-                console.log(account);
+                console.log("Checking session done!");
             }
         )
     .then(()=>{
+        // if(req.query.q=="")
+        //     res.redirect('/admin')
+            
      Category.find({})
         .then(category => categories = multipleMongooseToObject(category))
     })
     .then(()=>{
         Product.find({deletedAt:null,name: new RegExp(req.query.q, 'i')})
+        // Product.find({deleted: false ,$or:[ {name:req.query.q}, {vn_name:req.query.q},{price:req.query.q},{"category.name":req.query.q} ] })
             .then(productList=>{
                 products = Object.values(multipleMongooseToObject(productList))
                if (!account) {
