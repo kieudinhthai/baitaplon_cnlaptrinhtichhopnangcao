@@ -99,6 +99,12 @@ class layoutController{
             .catch((error) => {});
     }
 
+    //[GET] /blog
+
+    get_blog(req,res,next){
+        res.render('layouts/Blog')
+    }
+
 
     error(req, res, next){
     res.render('404')
