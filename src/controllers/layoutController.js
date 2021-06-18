@@ -105,6 +105,11 @@ class layoutController{
         res.render('layouts/Blog')
     }
 
+    //[GET] /blog_detail
+
+    get_blog_detail(req,res,next){
+            res.render('layouts/Blog_Detail')
+        }
 
     error(req, res, next){
     res.render('404')
