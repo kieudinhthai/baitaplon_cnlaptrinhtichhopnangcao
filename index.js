@@ -3,8 +3,8 @@ const path = require("path");
 const app = express()
 var session = require('express-session');
 const methordOverride = require("method-override");
-const route = require('./routes')
-const data = require('./config/connect_db')
+const route = require('./src/routes')
+const data = require('./src/config/connect_db')
 const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, "public")));
